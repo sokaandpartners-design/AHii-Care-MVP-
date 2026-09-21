@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AHii Care — digital healthcare navigation and engagement. Nigeria-first. Diaspora-connected.">
+  <meta name="theme-color" content="#0E1E4A">
+  <title>AHii Care™ — Prevent · Connect · Care</title>
+  <style>
+    :root{
+      --navy:#0E1E4A;--navy2:#17285f;--gold:#B98A2E;--green:#2D8C45;
+      --teal:#0E4D5C;--cream:#F5F2EB;--off:#FAFAF8;--text:#182033;
+      --muted:#687083;--line:#E5E7EB;--white:#fff;--danger:#9b2c2c;
+      --shadow:0 8px 30px rgba(14,30,74,.08);--radius:14px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--off);color:var(--text);font-family:Inter,Segoe UI,system-ui,-apple-system,sans-serif;line-height:1.5}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    a{text-decoration:none;color:inherit}
+    .hidden{display:none!important}
+    .container{width:min(1120px,calc(100% - 32px));margin:auto}
+    .topbar{background:var(--navy);color:#fff;text-align:center;font-size:12px;padding:7px 12px}
+    header{position:sticky;top:0;z-index:50;background:rgba(14,30,74,.97);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{height:64px;display:flex;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;color:#fff;min-width:max-content}
+    .brand-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--green),var(--gold));display:grid;place-items:center;font-size:19px}
+    .brand strong{font-size:16px;display:block;line-height:1}
+    .brand small{font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.45)}
+    .navlinks{display:flex;gap:4px;flex:1}
+    .navlinks button,.nav-actions button{background:none;border:0;color:rgba(255,255,255,.68);padding:8px 9px;border-radius:7px;font-size:12px}
+    .navlinks button:hover{background:rgba(255,255,255,.06);color:#fff}
+    .nav-actions{display:flex;gap:6px}
+    .btn{border:0;border-radius:9px;padding:10px 16px;font-weight:750;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+    .btn-gold{background:var(--gold);color:var(--navy)}
+    .btn-green{background:var(--green);color:#fff}
+    .btn-navy{background:var(--navy);color:#fff}
+    .btn-outline{background:#fff;color:var(--navy);border:1px solid var(--line)}
+    .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .hero{background:var(--navy);color:#fff;padding:78px 0 70px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:55px;align-items:center}
+    .eyebrow{color:var(--gold);font-size:11px;letter-spacing:2.4px;font-weight:800;text-transform:uppercase}
+    h1{font-size:clamp(36px,6vw,64px);line-height:1.02;letter-spacing:-2.4px;margin:12px 0 18px}
+    .hero p{font-size:17px;line-height:1.8;color:rgba(255,255,255,.66);max-width:620px}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+    .hero-note{font-size:11px;color:rgba(255,255,255,.4);margin-top:14px}
+    .passport{background:linear-gradient(145deg,#1b2a5c,#101d43);border:1px solid rgba(185,138,46,.28);border-radius:20px;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.22)}
+    .passport-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:16px;margin-bottom:20px}
+    .passport-id{font-family:ui-monospace,SFMono-Regular,monospace;color:var(--gold);font-weight:800;letter-spacing:1px}
+    .index{display:flex;align-items:center;gap:18px}
+    .ring{width:90px;height:90px;border-radius:50%;background:conic-gradient(var(--green) 0 85%,rgba(255,255,255,.08) 85%);display:grid;place-items:center}
+    .ring>div{width:70px;height:70px;border-radius:50%;background:#17285f;display:grid;place-items:center;color:#7bd090;font-weight:850;font-size:20px}
+    .bars{flex:1}.bar{display:grid;grid-template-columns:80px 1fr 40px;gap:8px;align-items:center;margin:8px 0;font-size:10px;color:rgba(255,255,255,.5)}
+    .track{height:5px;background:rgba(255,255,255,.08);border-radius:9px;overflow:hidden}.fill{height:100%;background:var(--green)}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}.tag{background:rgba(45,140,69,.18);border:1px solid rgba(45,140,69,.3);color:#8be0a0;border-radius:6px;padding:4px 8px;font-size:9px;font-weight:700}
+    .banner{padding:10px 16px;text-align:center;font-size:11px}
+    .banner.gold{background:#F5EDD6;color:var(--navy)}.banner.green{background:var(--green);color:#fff}
+    section{padding:65px 0}.section-head{text-align:center;max-width:760px;margin:0 auto 30px}
+    .section-head h2{font-size:clamp(26px,4vw,40px);line-height:1.1;color:var(--navy);margin:9px 0}
+    .section-head p{color:var(--muted);line-height:1.75}
+    .grid{display:grid;gap:16px}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}
+    .card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:var(--radius);padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+    .card h3{color:var(--navy);font-size:16px;margin:10px 0 6px}.card p{color:var(--muted);font-size:13px;line-height:1.7;margin:0}
+    .icon{font-size:27px}.three-tier{background:var(--navy);color:#fff}.three-tier .section-head h2{color:#fff}.three-tier .section-head p{color:rgba(255,255,255,.55)}
+    .tier{background:#17285f;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:22px}.tier b{color:var(--gold);font-size:12px;letter-spacing:1.5px}.tier h3{font-size:20px;margin:8px 0}.tier p{color:rgba(255,255,255,.55);font-size:13px}
+    .page{padding:48px 0;min-height:65vh}.page-title{margin-bottom:24px}.page-title h1{font-size:36px;color:var(--navy);letter-spacing:-1.5px;margin:5px 0}.page-title p{color:var(--muted)}
+    .form-card{max-width:720px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+    .fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}
+    label{display:block;font-size:11px;font-weight:800;color:var(--navy);margin-bottom:6px}
+    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 11px;background:#fff;color:var(--text);outline:0}
+    input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(45,140,69,.08)}
+    textarea{min-height:90px;resize:vertical}
+    .stepbar{display:flex;gap:4px;margin-bottom:22px}.stepbar span{height:4px;flex:1;background:var(--line);border-radius:4px}.stepbar span.on{background:var(--green)}
+    .check{display:flex;gap:10px;padding:11px;border:1px solid var(--line);border-radius:9px;margin-top:9px;cursor:pointer;font-size:12px;color:var(--text)}.check.on{border-color:var(--green);background:#edf8f0}.check input{width:16px;height:16px;margin:0;flex:none}
+    .notice{background:#F5EDD6;border:1px solid rgba(185,138,46,.25);border-radius:9px;padding:12px;font-size:11px;color:var(--muted);line-height:1.65;margin:15px 0}
+    .success{text-align:center;padding:35px}.success-id{font:800 22px ui-monospace;color:var(--green);margin:14px 0}
+    .provider{display:flex;flex-direction:column;gap:11px}.provider-top{display:flex;justify-content:space-between;gap:12px}.provider .meta{color:var(--muted);font-size:11px}
+    .pill{display:inline-flex;border-radius:20px;padding:3px 8px;font-size:9px;font-weight:800}.verified{background:#dcfce7;color:#166534}.review{background:#dbeafe;color:#1e40af}.received{background:#fef3c7;color:#92400e}
+    .dashboard-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;flex-wrap:wrap}
+    .health-id{font:800 16px ui-monospace;color:var(--green);background:#edf8f0;border:1px solid #cdebd4;border-radius:7px;padding:5px 9px;display:inline-block}
+    .journey-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f0f1f3}.journey-dot{width:20px;height:20px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:10px;color:#fff}.journey-dot.done{background:var(--green)}
+    .metric{text-align:center}.metric strong{display:block;font:800 27px ui-monospace;color:var(--navy)}.metric small{color:var(--muted);font-size:10px}
+    .table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th,td{text-align:left;padding:9px;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:9px;color:var(--muted);background:var(--off)}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:grid;place-items:center;padding:16px}.modal-box{background:#fff;border-radius:15px;max-width:500px;width:100%;padding:25px}
+    footer{background:#080e1a;color:rgba(255,255,255,.5);padding:38px 0}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px}.footer-title{color:#fff;font-weight:800;margin-bottom:8px}.footer a{display:block;font-size:12px;margin:6px 0}.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:28px;padding-top:18px;font-size:10px}
+    .toast{position:fixed;right:18px;bottom:18px;background:var(--navy);color:#fff;border-left:4px solid var(--gold);padding:12px 15px;border-radius:9px;box-shadow:var(--shadow);z-index:200;max-width:360px;font-size:12px}
+    @media(max-width:800px){.hero-grid,.grid-3,.grid-4,.footer-grid{grid-template-columns:1fr}.navlinks{display:none}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.hero{padding-top:55px}.passport{display:none}}
+  </style>
+</head>
+<body>
+  <div class="topbar">🇳🇬 Nigeria-first · Africa-ready · Diaspora-connected · AHii Care™ is a healthcare navigation platform — not an insurer or HMO.</div>
+  <header>
+    <div class="container nav">
+      <button class="brand" onclick="navigate('home')" aria-label="AHii Care home">
+        <span class="brand-mark">💚</span>
+        <span><strong>AHii <em style="color:#B98A2E;font-style:normal">Care</em></strong><small>PREVENT · CONNECT · CARE</small></span>
+      </button>
+      <nav class="navlinks" aria-label="Main navigation">
+        <button onclick="navigate('how')">How It Works</button>
+        <button onclick="navigate('lifecheck')">LifeCheck 360™</button>
+        <button onclick="navigate('providers')">Find Healthcare</button>
+        <button onclick="navigate('corporate')">For Business</button>
+        <button onclick="navigate('diaspora')">Diaspora Care</button>
+      </nav>
+      <div class="nav-actions" id="navActions"></div>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><div class="footer-title">AHii Care™</div><div style="font-size:12px;line-height:1.7">Digital healthcare navigation and engagement for individuals, families, employers and diaspora communities.</div></div>
+      <div><div class="footer-title">Platform</div><a href="#" onclick="navigate('how');return false">How it works</a><a href="#" onclick="navigate('providers');return false">Find healthcare</a><a href="#" onclick="navigate('joinprovider');return false">Join as provider</a></div>
+      <div><div class="footer-title">SOKAPHYGITAL LTD</div><div style="font-size:11px;line-height:1.7">United Kingdom · SC851774<br>AHii Care™ is wholly owned by SOKAPHYGITAL LTD.</div></div>
+    </div>
+    <div class="container footer-bottom">© 2026 SOKAPHYGITAL LTD. AHii Care™. Prototype/pilot platform. Do not submit real clinical or sensitive health information until production security, privacy, clinical governance and backend infrastructure are in place.</div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const STORE = "ahiicare_v2";
+    const state = {
+      page:"home", user:null, users:[], regStep:1,
+      reg:{fn:"",ln:"",email:"",phone:"",country:"Nigeria",state:"",city:"",language:"English",dob:""},
+      consents:{terms:false,health:false,communications:false,marketing:false},
+      life:{step:0,data:{},done:false,ticket:""},
+      care:{reason:"",location:"",urgency:"",notes:""},
+      providerSearch:"", providerType:"all",
+      corporate:{company:"",employees:"",location:"",contact:"",email:"",phone:"",tier:""},
+      diaspora:{sponsor:"",sponsorEmail:"",sponsorPhone:"",family:"",familyRelation:"",country:"United Kingdom",state:"",need:""},
+      provider:{name:"",org:"",email:"",phone:"",registration:"",type:"",specialty:"",telehealth:""},
+      admin:false, adminTab:"overview", toast:""
+    };
+
+    const providers = [
+      {name:"Lagos Quality Diagnostics",type:"Laboratory",specialty:"Diagnostic Laboratory",city:"Victoria Island, Lagos",state:"Lagos",tele:false,status:"verified",languages:"English"},
+      {name:"AHii Founding GP Network",type:"GP",specialty:"General Practice",city:"Lagos",state:"Lagos",tele:true,status:"verified",languages:"English · Yoruba"},
+      {name:"AHii Specialist Network",type:"Specialist",specialty:"Specialist referrals",city:"Lagos",state:"Lagos",tele:true,status:"verified",languages:"English"},
+      {name:"Wellspring Pharmacy",type:"Pharmacy",specialty:"Community Pharmacy",city:"Lekki, Lagos",state:"Lagos",tele:false,status:"received",languages:"English · Yoruba"},
+      {name:"Abuja Wellness Network",type:"Wellness",specialty:"Preventive Health",city:"Garki, Abuja",state:"FCT Abuja",tele:true,status:"received",languages:"English · Hausa"}
+    ];
+
+    const lifeSteps = [
+      {title:"Baseline Profile",fields:[
+        ["age","Age group","select",["18–25","26–35","36–45","46–55","56–65","66+"]],
+        ["sex","Biological sex","select",["Male","Female","Prefer not to say"]],
+        ["location","Current state / city","text",""]
+      ]},
+      {title:"Health Coverage & Access",fields:[
+        ["coverage","Health coverage","select",["None — uninsured","State health scheme","Private HMO","Employer-funded","Not sure"]],
+        ["doctor","Last saw a doctor","select",["Within last month","1–6 months ago","6–12 months ago","Over 1 year ago","Never"]],
+        ["check","Last health check / blood test","select",["Within 3 months","3–12 months ago","Over 1 year ago","Never"]]
+      ]},
+      {title:"Health Priorities",fields:[
+        ["focus","Primary health focus","select",["General wellbeing","Preventive / annual check","Cardiovascular health","Diabetes / blood sugar","Weight management","Women's health","Men's health","Mental wellbeing","Maternal health","Finding a specialist","Other"]],
+        ["concern","Current health concern (optional)","textarea",""]
+      ]},
+      {title:"Lifestyle",fields:[
+        ["activity","Physical activity","select",["Very active","Moderately active","Light activity","Mostly sedentary"]],
+        ["stress","Current stress level","select",["Low","Moderate","High — affecting daily life","Very high"]],
+        ["tobacco","Smoke or use tobacco?","select",["No","Occasionally","Regularly","Former smoker"]]
+      ]},
+      {title:"Support Needed",fields:[
+        ["support","Type of support needed","select",["Annual LifeCheck / health assessment","GP consultation","Specialist second opinion","Diagnostic tests","Pharmacy / medicines","Mental health support","Maternal / antenatal care","Family member care coordination","Corporate health programme"]],
+        ["urgency","How urgent is your need?","select",["Not urgent — planning ahead","Soon — within the next month","Fairly urgent — within 2 weeks","Urgent — within days"]]
+      ]}
+    ];
+
+    const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const uid = () => "AHII-NG-" + String(Math.floor(Math.random()*999999)+1).padStart(6,"0");
+    const ticket = prefix => "TKT-" + prefix + "-" + String(Math.floor(Math.random()*99999)+1).padStart(5,"0");
+    const paymentRef = () => "AHII-PAY-2026-" + String(Math.floor(Math.random()*99999)+1).padStart(5,"0");
+
+    function save(){
+      localStorage.setItem(STORE, JSON.stringify({users:state.users,user:state.user}));
+    }
+    function load(){
+      try{
+        const raw = JSON.parse(localStorage.getItem(STORE) || "{}");
+        state.users = Array.isArray(raw.users) ? raw.users : [];
+        state.user = raw.user || null;
+      }catch(e){ console.warn("AHii Care storage reset:",e); }
+    }
+    function currentUser(){
+      return state.users.find(u => state.user && u.id === state.user.id) || state.user;
+    }
+    function syncUser(updated){
+      const i = state.users.findIndex(u=>u.id===updated.id);
+      if(i>=0) state.users[i]=updated;
+      state.user=updated;
+      save();
+    }
+    function toast(message){
+      state.toast=message; render();
+      setTimeout(()=>{state.toast="";render()},3200);
+    }
+    function navigate(page){
+      state.page=page;
+      if(page!=="admin") state.admin=false;
+      render();
+      window.scrollTo({top:0,behavior:"smooth"});
+    }
+    function signOut(){
+      state.user=null;save();navigate("home");
+    }
+    function navActions(){
+      if(state.user){
+        return `<button class="btn btn-green" onclick="navigate('dashboard')">My Dashboard</button>
+                <button class="btn btn-ghost" onclick="signOut()">Sign out</button>`;
+      }
+      return `<button class="btn btn-ghost" onclick="navigate('login')">Sign in</button>
+              <button class="btn btn-gold" onclick="navigate('register')">Get started</button>`;
+    }
+
+    function home(){
+      return `
+      <div class="hero"><div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AHii Care™ · Digital Healthcare Navigation</div>
+          <h1>Prevent.<br><span style="color:#B98A2E">Connect.</span><br>Care.</h1>
+          <p>A human-facing healthcare navigation and engagement platform designed to help individuals, families, employers and diaspora communities understand their healthcare journey and reach the right pathway.</p>
+          <div class="hero-cta"><button class="btn btn-gold" onclick="navigate('register')">Start Your AHII Care Journey →</button><button class="btn btn-ghost" onclick="navigate('how')">See how it works</button></div>
+          <div class="hero-note">Nigeria-first · Africa-ready · Diaspora-connected · Pilot V1</div>
+        </div>
+        <div class="passport">
+          <div class="passport-top"><div><div style="color:#fff;font-weight:800">AHII Health ID</div><div style="color:rgba(255,255,255,.4);font-size:10px">Your navigation identity</div></div><div class="passport-id">AHII-NG-000001</div></div>
+          <div class="index"><div class="ring"><div>85</div></div><div class="bars">
+            <div class="bar"><span>Cardiovascular</span><div class="track"><div class="fill" style="width:92%"></div></div><b>92%</b></div>
+            <div class="bar"><span>Metabolic</span><div class="track"><div class="fill" style="width:79%"></div></div><b>79%</b></div>
+            <div class="bar"><span>Wellbeing</span><div class="track"><div class="fill" style="width:85%"></div></div><b>85%</b></div>
+          </div></div>
+          <div class="tags"><span class="tag">Consult</span><span class="tag">Diagnose</span><span class="tag">Dispense</span><span class="tag">Monitor</span><span class="tag">PAMCHI</span></div>
+        </div>
+      </div></div>
+      <div class="banner gold"><b>AHii Care™ is wholly owned by SOKAPHYGITAL LTD — United Kingdom · SC851774.</b></div>
+      <div class="banner green"><b>V1 PILOT IS FREE</b> · Registration · AHII Health ID · LifeCheck 360™ · Healthcare navigation requests</div>
+      <section><div class="container">
+        <div class="section-head"><div class="eyebrow">THE FRONT DOOR</div><h2>One place to start your healthcare journey.</h2><p>AHii Care is deliberately not another hospital, HMO, insurer, EHR or pharmacy. It is the navigation and engagement layer between people and healthcare delivery.</p></div>
+        <div class="grid grid-3">
+          ${[
+            ["🪪","AHII Health ID","Create a simple navigation identity that can follow your AHii Care journey."],
+            ["⭐","LifeCheck 360™","Complete a structured wellbeing and prevention assessment. It does not diagnose."],
+            ["🧭","Healthcare Navigation","Tell us what you need and where you are. AHii Care helps identify the appropriate next pathway."]
+          ].map(x=>`<div class="card"><div class="icon">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("")}
+        </div>
+      </div></section>
+      <section class="three-tier"><div class="container">
+        <div class="section-head"><div class="eyebrow">THE THREE-TIER ARCHITECTURE</div><h2>AHii Care sits between financing and delivery.</h2><p>The platform coordinates engagement while clinical decisions remain with qualified healthcare professionals.</p></div>
+        <div class="grid grid-3">${[
+          ["TIER 1","Healthcare financing","NHIA · HMOs · employers · diaspora · private health financing"],
+          ["TIER 2","AHii Care engagement rail","Health ID · LifeCheck · navigation · coordination · family care"],
+          ["TIER 3","Healthcare delivery","Consult · diagnose · dispense · monitor — delivered by independent providers"]
+        ].map(x=>`<div class="tier"><b>${x[0]}</b><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("")}</div>
+      </div></section>`;
+    }
+
+    function how(){
+      return `<div class="page"><div class="container">
+        <div class="page-title"><div class="eyebrow">HOW IT WORKS</div><h1>From first click to coordinated care.</h1><p>A controlled Lagos-first pilot workflow. Early operations can be human-powered behind the scenes.</p></div>
+        <div class="grid grid-3">${[
+          ["01","Discover","Learn about a health priority, prevention, healthcare access or family-care need."],
+          ["02","Register","Create an AHII Health ID with only the information needed for the navigation service."],
+          ["03","LifeCheck 360™","Answer a structured assessment covering prevention, wellbeing, lifestyle and support needs."],
+          ["04","Request support","Tell AHii Care what you need, your location and the urgency."],
+          ["05","Human navigation","An AHii Care Navigator reviews the request and identifies an appropriate pathway."],
+          ["06","Provider connection","Where appropriate, AHii Care connects you with a provider from the directory. Clinical decisions remain theirs."]
+        ].map(x=>`<div class="card"><div class="eyebrow">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("")}</div>
+        <div class="notice"><b>Important:</b> AHii Care is not emergency care and does not diagnose. If you believe you have a medical emergency, contact your nearest emergency service immediately.</div>
+      </div></div>`;
+    }
+
+    function register(){
+      const r=state.reg,c=state.consents;
+      if(state.regStep===4){
+        return `<div class="page"><div class="form-card success"><div style="font-size:48px">💚</div><div class="eyebrow">WELCOME TO AHII CARE</div><h2 style="color:var(--navy)">Your AHII Health ID has been created.</h2><div class="success-id">${escapeHtml(state.user?.healthId||"AHII-NG-000001")}</div><p style="color:var(--muted)">Save this ID. It will identify your AHii Care navigation journey.</p><button class="btn btn-green" onclick="navigate('lifecheck')">Complete LifeCheck 360™ →</button></div></div>`;
+      }
+      const step=state.regStep;
+      let body="";
+      if(step===1) body=`<div class="fields">
+        <div><label>First name *</label><input value="${escapeHtml(r.fn)}" oninput="state.reg.fn=this.value"></div>
+        <div><label>Last name *</label><input value="${escapeHtml(r.ln)}" oninput="state.reg.ln=this.value"></div>
+        <div><label>Email *</label><input type="email" value="${escapeHtml(r.email)}" oninput="state.reg.email=this.value"></div>
+        <div><label>Phone / WhatsApp *</label><input value="${escapeHtml(r.phone)}" oninput="state.reg.phone=this.value"></div>
+        <div><label>Country *</label><select onchange="state.reg.country=this.value"><option>Nigeria</option><option>United Kingdom</option><option>United States</option><option>Ghana</option><option>Kenya</option><option>Other</option></select></div>
+        <div><label>Date of birth</label><input type="date" value="${escapeHtml(r.dob)}" oninput="state.reg.dob=this.value"></div>
+      </div>`;
+      if(step===2) body=`<div class="fields">
+        <div><label>State / Region</label><input value="${escapeHtml(r.state)}" oninput="state.reg.state=this.value" placeholder="e.g. Lagos"></div>
+        <div><label>City</label><input value="${escapeHtml(r.city)}" oninput="state.reg.city=this.value" placeholder="e.g. Ikeja"></div>
+        <div><label>Preferred language</label><select onchange="state.reg.language=this.value">${["English","Yoruba","Igbo","Hausa","French","Swahili"].map(x=>`<option ${r.language===x?"selected":""}>${x}</option>`).join("")}</select></div>
+      </div><div class="notice">We only ask for information needed for the navigation service. Clinical records should remain with the relevant healthcare provider unless a lawful, secure integration is introduced.</div>`;
+      if(step===3) body=`<div class="notice"><b>Before you continue:</b> Please read the final production Privacy Notice and Terms of Service before using AHii Care with real health information. This V1 is a functional prototype and stores demo data in this browser only.</div>
+        ${[
+          ["terms","Account Terms and Privacy Notice","I understand and accept the AHii Care account terms and privacy information."],
+          ["health","Health Data Processing","I consent to AHii Care processing information I voluntarily provide for healthcare navigation purposes."],
+          ["communications","Service Communications","I agree to receive service-related communications."],
+          ["marketing","Health Education & Marketing","I optionally agree to receive health education or marketing communications."]
+        ].map(x=>`<label class="check ${c[x[0]]?"on":""}"><input type="checkbox" ${c[x[0]]?"checked":""} onchange="state.consents.${x[0]}=this.checked;render()"> <span><b>${x[1]}</b><br>${x[2]}</span></label>`).join("")}`;
+      return `<div class="page"><div class="form-card"><div class="eyebrow">CREATE YOUR AHII HEALTH ID</div><h1 style="font-size:30px;color:var(--navy);letter-spacing:-1px">Start your journey.</h1><div class="stepbar">${[1,2,3].map(i=>`<span class="${i<=step?"on":""}"></span>`).join("")}</div>${body}<div style="display:flex;justify-content:space-between;gap:10px;margin-top:20px">${step>1?`<button class="btn btn-outline" onclick="state.regStep--;render()">← Back</button>`:"<span></span>"}<button class="btn btn-green" onclick="nextRegister()">${step===3?"Create AHII Health ID":"Continue →"}</button></div></div></div>`;
+    }
+
+    function nextRegister(){
+      const r=state.reg;
+      if(state.regStep===1 && (!r.fn||!r.ln||!r.email||!r.phone)){alert("Please complete the required fields.");return}
+      if(state.regStep===3 && (!state.consents.terms||!state.consents.health)){alert("The account and health-data consents are required.");return}
+      if(state.regStep<3){state.regStep++;render();return}
+      const user={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),healthId:uid(),...r,createdAt:new Date().toISOString(),lifechecks:[],careRequests:[]};
+      state.users.push(user);state.user=user;save();state.regStep=4;render();
+    }
+
+    function login(){
+      return `<div class="page"><div class="form-card" style="max-width:480px"><div class="eyebrow">MEMBER SIGN IN</div><h1 style="font-size:30px;color:var(--navy);letter-spacing:-1px">Welcome back.</h1><div class="fields"><div class="field full"><label>Email</label><input id="loginEmail" type="email"></div><div class="field full"><label>AHII Health ID</label><input id="loginId" placeholder="AHII-NG-XXXXXX"></div></div><button class="btn btn-green" style="width:100%;margin-top:18px" onclick="doLogin()">Sign in</button><p style="font-size:11px;color:var(--muted);margin-top:12px">Prototype login only. Production authentication must use a secure backend and never rely on browser storage.</p></div></div>`;
+    }
+    function doLogin(){
+      const email=document.getElementById("loginEmail").value.trim().toLowerCase(),id=document.getElementById("loginId").value.trim();
+      const u=state.users.find(x=>x.email.toLowerCase()===email && x.healthId===id);
+      if(!u){alert("No matching member found in this browser. Please register first.");return}
+      state.user=u;save();navigate("dashboard");
+    }
+
+    function lifecheck(){
+      if(!state.user){return `<div class="page"><div class="form-card" style="text-align:center"><h2 style="color:var(--navy)">Create your AHII Health ID first.</h2><p style="color:var(--muted)">LifeCheck 360™ is linked to your navigation identity.</p><button class="btn btn-green" onclick="navigate('register')">Get started</button></div></div>`}
+      if(state.life.done){
+        const p=lifePathway();
+        return `<div class="page"><div class="form-card"><div class="success" style="padding:15px"><div style="font-size:42px">⭐</div><div class="eyebrow">LIFECHECK 360™ COMPLETE</div><h2 style="color:var(--navy)">${escapeHtml(p.title)}</h2><p style="color:var(--muted);margin:10px 0">${escapeHtml(p.text)}</p><div class="notice"><b>Navigation ticket:</b> ${escapeHtml(state.life.ticket)}<br>This is a navigation recommendation, not a diagnosis.</div><button class="btn btn-green" onclick="navigate('dashboard')">View My Dashboard</button></div></div></div>`;
+      }
+      const s=lifeSteps[state.life.step],d=state.life.data;
+      return `<div class="page"><div class="form-card"><div class="eyebrow">LIFECHECK 360™ · STEP ${state.life.step+1} OF ${lifeSteps.length}</div><h1 style="font-size:29px;color:var(--navy);letter-spacing:-1px">${s.title}</h1><div class="stepbar">${lifeSteps.map((_,i)=>`<span class="${i<=state.life.step?"on":""}"></span>`).join("")}</div>${s.fields.map(f=>{
+        const [key,label,type,opts]=f;
+        if(type==="text") return `<div style="margin-bottom:13px"><label>${label}</label><input value="${escapeHtml(d[key]||"")}" oninput="state.life.data.${key}=this.value"></div>`;
+        if(type==="textarea") return `<div style="margin-bottom:13px"><label>${label}</label><textarea oninput="state.life.data.${key}=this.value">${escapeHtml(d[key]||"")}</textarea></div>`;
+        return `<div style="margin-bottom:13px"><label>${label}</label><select onchange="state.life.data.${key}=this.value"><option value="">Select…</option>${opts.map(o=>`<option ${d[key]===o?"selected":""}>${o}</option>`).join("")}</select></div>`;
+      }).join("")}<div style="display:flex;justify-content:space-between;margin-top:20px">${state.life.step>0?`<button class="btn btn-outline" onclick="state.life.step--;render()">← Back</button>`:"<span></span>"}<button class="btn btn-green" onclick="nextLife()">${state.life.step===lifeSteps.length-1?"Complete LifeCheck":"Continue →"}</button></div></div></div>`;
+    }
+
+    function nextLife(){
+      const s=lifeSteps[state.life.step];
+      const required=s.fields.filter(f=>f[0]!=="concern");
+      if(required.some(f=>!state.life.data[f[0]])){alert("Please complete the required fields on this step.");return}
+      if(state.life.step<lifeSteps.length-1){state.life.step++;render();return}
+      state.life.done=true;state.life.ticket=ticket("MED");
+      const u=currentUser();u.lifechecks=u.lifechecks||[];u.lifechecks.push({ticket:state.life.ticket,completedAt:new Date().toISOString(),data:{...state.life.data}});
+      syncUser(u);render();
+    }
+    function lifePathway(){
+      const f=state.life.data.focus||"",u=state.life.data.urgency||"";
+      if(u.startsWith("Urgent"))return {title:"Urgent Care Navigation",text:"Your selected urgency suggests prompt human follow-up. AHii Care is not emergency care; seek emergency services immediately if this is a medical emergency."};
+      if(f.includes("Cardiovascular"))return {title:"Cardiovascular Health Pathway",text:"Consider navigation to a qualified healthcare professional for appropriate cardiovascular assessment."};
+      if(f.includes("Diabetes"))return {title:"Metabolic Health Pathway",text:"Consider navigation to a qualified clinician and, where clinically appropriate, diagnostic testing."};
+      if(f.includes("Women's")||f.includes("Maternal"))return {title:"Women's Health Pathway",text:"Consider navigation to an appropriate women's or maternal-health professional."};
+      if(f.includes("Mental"))return {title:"Mental Wellbeing Pathway",text:"Consider navigation to an appropriate mental-health professional or support service."};
+      return {title:"General Preventive Health Pathway",text:"Consider an annual preventive health assessment and discuss appropriate screening with a qualified professional."};
+    }
+
+    function providersPage(){
+      const q=state.providerSearch.toLowerCase(),t=state.providerType;
+      const list=providers.filter(p=>(t==="all"||p.type===t)&&(!q||(p.name+p.specialty+p.city+p.state).toLowerCase().includes(q)));
+      return `<div class="page"><div class="container"><div class="page-title"><div class="eyebrow">HEALTHCARE DIRECTORY</div><h1>Find healthcare.</h1><p>Directory status is shown transparently. Only providers that have completed AHii verification should carry the AHII Verified label.</p></div>
+      <div class="card" style="margin-bottom:16px"><div class="fields"><div><label>Search</label><input value="${escapeHtml(state.providerSearch)}" oninput="state.providerSearch=this.value;render()" placeholder="Provider, specialty, city…"></div><div><label>Provider type</label><select onchange="state.providerType=this.value;render()"><option value="all">All</option>${["GP","Specialist","Laboratory","Pharmacy","Wellness"].map(x=>`<option ${t===x?"selected":""}>${x}</option>`).join("")}</select></div></div></div>
+      <div class="grid grid-3">${list.map(p=>`<div class="card provider"><div class="provider-top"><div><h3 style="margin:0">${escapeHtml(p.name)}</h3><div class="meta">${escapeHtml(p.specialty)}</div></div><span class="pill ${p.status}">${p.status==="verified"?"✓ AHII Verified":p.status==="review"?"Under Review":"Application Received"}</span></div><div class="meta">📍 ${escapeHtml(p.city)}</div><div class="meta">🗣 ${escapeHtml(p.languages)}</div><div class="meta">${p.tele?"💻 Telehealth available":"🏥 In-person pathway"}</div><button class="btn btn-outline" onclick="requestProvider('${escapeHtml(p.name)}')">Request navigation</button></div>`).join("")}</div>
+      <div style="text-align:center;margin-top:28px"><button class="btn btn-navy" onclick="navigate('joinprovider')">Join as a healthcare provider →</button></div></div></div>`;
+    }
+    function requestProvider(name){
+      if(!state.user){toast("Please create or sign in to your AHII Health ID first.");navigate("register");return}
+      const u=currentUser();u.careRequests=u.careRequests||[];u.careRequests.push({type:"Provider navigation",provider:name,createdAt:new Date().toISOString(),status:"NEW"});syncUser(u);toast("Navigation request recorded. An AHii Care Navigator can follow up.");
+    }
+
+    function corporate(){
+      const f=state.corporate;
+      if(f.sent)return `<div class="page"><div class="form-card success"><div style="font-size:45px">🏢</div><div class="eyebrow">ENQUIRY RECEIVED</div><h2 style="color:var(--navy)">Thank you, ${escapeHtml(f.contact)}.</h2><p style="color:var(--muted)">AHii Care will review the workforce-health enquiry and follow up using the contact details provided.</p><div class="success-id" style="font-size:16px">${escapeHtml(f.ref)}</div><button class="btn btn-green" onclick="navigate('home')">Return home</button></div></div>`;
+      return `<div class="page"><div class="form-card"><div class="eyebrow">AHII BUSINESS HEALTH</div><h1 style="font-size:30px;color:var(--navy);letter-spacing:-1px">Health engagement for employers.</h1><p style="color:var(--muted)">Employer-facing insights should be aggregated. Individual employee health information should remain private and subject to appropriate consent and lawful processing.</p><div class="grid grid-3" style="margin:20px 0">${[
+        ["Essential","₦15k–₦25k","employee/month"],["Enhanced","₦25k–₦50k","employee/month"],["Executive 360","₦50k–₦100k","employee/month"]
+      ].map(x=>`<div class="card" style="padding:15px"><b style="color:var(--navy)">${x[0]}</b><div style="font-weight:800;color:var(--green);font-size:18px">${x[1]}</div><small style="color:var(--muted)">${x[2]}</small></div>`).join("")}</div>
+      <div class="fields"><div><label>Company *</label><input value="${escapeHtml(f.company)}" oninput="state.corporate.company=this.value"></div><div><label>Employees</label><input value="${escapeHtml(f.employees)}" oninput="state.corporate.employees=this.value"></div><div><label>Contact name *</label><input value="${escapeHtml(f.contact)}" oninput="state.corporate.contact=this.value"></div><div><label>Email *</label><input value="${escapeHtml(f.email)}" oninput="state.corporate.email=this.value"></div><div><label>Phone</label><input value="${escapeHtml(f.phone)}" oninput="state.corporate.phone=this.value"></div><div><label>Location</label><input value="${escapeHtml(f.location)}" oninput="state.corporate.location=this.value"></div><div class="field full"><label>Preferred tier</label><select onchange="state.corporate.tier=this.value"><option>Select…</option><option>Essential</option><option>Enhanced</option><option>Executive 360</option></select></div></div><button class="btn btn-green" style="width:100%;margin-top:18px" onclick="submitCorporate()">Request corporate consultation</button></div></div>`;
+    }
+    function submitCorporate(){
+      const f=state.corporate;if(!f.company||!f.contact||!f.email){alert("Please complete the required fields.");return}f.sent=true;f.ref="AHII-CORP-"+Date.now().toString().slice(-6);render();
+    }
+
+    function diaspora(){
+      const f=state.diaspora;
+      if(f.sent)return `<div class="page"><div class="form-card success"><div style="font-size:45px">🌍</div><div class="eyebrow">FAMILY CARE REQUEST RECEIVED</div><h2 style="color:var(--navy)">Your family-care enquiry is recorded.</h2><p style="color:var(--muted)">A navigator can follow up with the sponsor and coordinate an appropriate healthcare pathway for the family member.</p><div class="success-id" style="font-size:16px">${escapeHtml(f.ref)}</div><button class="btn btn-green" onclick="navigate('home')">Return home</button></div></div>`;
+      return `<div class="page"><div class="form-card"><div class="eyebrow">DIASPORA FAMILY CARE</div><h1 style="font-size:30px;color:var(--navy);letter-spacing:-1px">Care for family from wherever you are.</h1><p style="color:var(--muted)">Set up a family-care enquiry for a relative in Nigeria or another supported location. Early pilot coordination is human-led.</p><div class="fields"><div><label>Your name *</label><input value="${escapeHtml(f.sponsor)}" oninput="state.diaspora.sponsor=this.value"></div><div><label>Your email *</label><input value="${escapeHtml(f.sponsorEmail)}" oninput="state.diaspora.sponsorEmail=this.value"></div><div><label>Your phone / WhatsApp</label><input value="${escapeHtml(f.sponsorPhone)}" oninput="state.diaspora.sponsorPhone=this.value"></div><div><label>Family member name *</label><input value="${escapeHtml(f.family)}" oninput="state.diaspora.family=this.value"></div><div><label>Relationship</label><input value="${escapeHtml(f.familyRelation)}" oninput="state.diaspora.familyRelation=this.value" placeholder="e.g. parent"></div><div><label>State / Region</label><input value="${escapeHtml(f.state)}" oninput="state.diaspora.state=this.value" placeholder="e.g. Lagos"></div><div class="field full"><label>What support is needed?</label><select onchange="state.diaspora.need=this.value"><option>Select…</option>${["Annual health check / LifeCheck 360","GP access","Chronic disease management","Maternal health","Specialist appointment","Medicines pathway","Emergency coordination"].map(x=>`<option>${x}</option>`).join("")}</select></div></div><div class="notice"><b>Emergency:</b> AHii Care is not an emergency service. If the family member is experiencing an emergency, contact local emergency services immediately.</div><button class="btn btn-gold" style="width:100%" onclick="submitDiaspora()">Set up family-care enquiry</button></div></div>`;
+    }
+    function submitDiaspora(){
+      const f=state.diaspora;if(!f.sponsor||!f.sponsorEmail||!f.family){alert("Please complete the required fields.");return}f.sent=true;f.ref="AHII-DIA-"+Date.now().toString().slice(-6);render();
+    }
+
+    function joinProvider(){
+      const f=state.provider;
+      if(f.sent)return `<div class="page"><div class="form-card success"><div style="font-size:45px">🩺</div><div class="eyebrow">APPLICATION RECEIVED</div><h2 style="color:var(--navy)">Thank you, ${escapeHtml(f.name)}.</h2><p style="color:var(--muted)">Your application is now recorded as <b>Application Received</b>. AHii Care should only publish an AHII Verified badge after its verification process is actually completed.</p><button class="btn btn-green" onclick="navigate('home')">Return home</button></div></div>`;
+      return `<div class="page"><div class="form-card"><div class="eyebrow">CLINICAL NETWORK</div><h1 style="font-size:30px;color:var(--navy);letter-spacing:-1px">Join AHii Care.</h1><p style="color:var(--muted)">AHii Care is a navigation platform. Clinical decisions remain with qualified professionals and their organisations.</p><div class="fields"><div><label>Professional name *</label><input value="${escapeHtml(f.name)}" oninput="state.provider.name=this.value"></div><div><label>Organisation</label><input value="${escapeHtml(f.org)}" oninput="state.provider.org=this.value"></div><div><label>Email *</label><input value="${escapeHtml(f.email)}" oninput="state.provider.email=this.value"></div><div><label>Phone *</label><input value="${escapeHtml(f.phone)}" oninput="state.provider.phone=this.value"></div><div><label>Professional registration number</label><input value="${escapeHtml(f.registration)}" oninput="state.provider.registration=this.value"></div><div><label>Provider type *</label><select onchange="state.provider.type=this.value"><option>Select…</option>${["GP","Specialist","Diagnostic Laboratory","Pharmacy","Wellness","Mental Health","Physiotherapy"].map(x=>`<option>${x}</option>`).join("")}</select></div><div><label>Specialty</label><input value="${escapeHtml(f.specialty)}" oninput="state.provider.specialty=this.value"></div><div><label>Telehealth</label><select onchange="state.provider.telehealth=this.value"><option>Select…</option><option>Yes</option><option>No</option><option>Both</option></select></div></div><div class="notice">Provider applications are subject to document review and professional verification. Do not upload sensitive identity documents to this prototype form.</div><button class="btn btn-green" style="width:100%" onclick="submitProvider()">Submit application</button></div></div>`;
+    }
+    function submitProvider(){const f=state.provider;if(!f.name||!f.email||!f.phone||!f.type){alert("Please complete required fields.");return}f.sent=true;render()}
+
+    function dashboard(){
+      const u=currentUser();if(!u)return `<div class="page"><div class="form-card" style="text-align:center"><h2 style="color:var(--navy)">Please sign in.</h2><button class="btn btn-green" onclick="navigate('login')">Sign in</button></div></div>`;
+      const lc=(u.lifechecks||[]).length,cr=(u.careRequests||[]).length;
+      return `<div class="page"><div class="container">
+        <div class="dashboard-top"><div><div class="eyebrow">MY AHII CARE</div><h1 style="font-size:34px;color:var(--navy);letter-spacing:-1px;margin:4px 0">Welcome, ${escapeHtml(u.fn)} 👋</h1><span class="health-id">${escapeHtml(u.healthId)}</span><div style="font-size:11px;color:var(--muted);margin-top:6px">${escapeHtml(u.city||"")} ${u.state?", "+escapeHtml(u.state):""} · ${escapeHtml(u.country)}</div></div><button class="btn btn-gold" onclick="state.life={step:0,data:{},done:false,ticket:''};navigate('lifecheck')">⭐ Start / update LifeCheck</button></div>
+        <div class="grid grid-3" style="margin:22px 0"><div class="card metric"><strong>${lc}</strong><small>LifeChecks</small></div><div class="card metric"><strong>${cr}</strong><small>Care requests</small></div><div class="card metric"><strong>Active</strong><small>AHII Health ID</small></div></div>
+        <div class="grid grid-3"><div class="card"><h3>Care Journey Tracker</h3>${[
+          ["AHII Health ID created",true],["LifeCheck 360™ assessment",lc>0],["Healthcare navigation",cr>0],["Provider connection",false]
+        ].map(x=>`<div class="journey-row"><span class="journey-dot ${x[1]?"done":""}">${x[1]?"✓":""}</span><div style="font-size:11px;flex:1">${x[0]}<div style="font-size:10px;color:var(--muted)">${x[1]?"Complete":"Pending"}</div></div></div>`).join("")}</div>
+        <div class="card"><h3>Quick actions</h3><button class="btn btn-outline" style="width:100%;margin:4px 0" onclick="navigate('providers')">🧭 Find healthcare</button><button class="btn btn-outline" style="width:100%;margin:4px 0" onclick="navigate('lifecheck')">⭐ LifeCheck 360™</button><button class="btn btn-outline" style="width:100%;margin:4px 0" onclick="navigate('diaspora')">🌍 Family care</button></div>
+        <div class="card"><h3>My information</h3><div style="font-size:11px;color:var(--muted);line-height:1.9">Name: <b>${escapeHtml(u.fn+" "+u.ln)}</b><br>Email: ${escapeHtml(u.email)}<br>Phone: ${escapeHtml(u.phone)}<br>Language: ${escapeHtml(u.language)}</div></div></div>
+      </div></div>`;
+    }
+
+    function admin(){
+      if(!state.admin)return `<div class="page"><div class="form-card" style="max-width:430px"><div style="text-align:center;font-size:35px">🔐</div><div class="eyebrow" style="text-align:center">DEMO ADMIN</div><h1 style="font-size:28px;color:var(--navy);text-align:center;letter-spacing:-1px">AHii Care Admin</h1><div class="notice"><b>Prototype only.</b> This page is intentionally not a production authentication system. Do not deploy real patient data on this localStorage demo.</div><label>Demo password</label><input id="adminPwd" type="password"><button class="btn btn-navy" style="width:100%;margin-top:12px" onclick="adminLogin()">Enter admin</button></div></div>`;
+      const users=state.users;
+      const lcs=users.reduce((n,u)=>n+(u.lifechecks||[]).length,0),cr=users.reduce((n,u)=>n+(u.careRequests||[]).length,0);
+      return `<div class="page"><div class="container"><div class="dashboard-top"><div><div class="eyebrow">SOKAPHYGITAL LTD · SC851774</div><h1 style="font-size:32px;color:var(--navy);margin:3px 0">AHii Care Admin</h1><div style="font-size:11px;color:var(--muted)">Prototype operations dashboard</div></div><button class="btn btn-outline" onclick="state.admin=false;render()">Sign out</button></div>
+      <div class="grid grid-4" style="margin:20px 0"><div class="card metric"><strong>${users.length}</strong><small>Members</small></div><div class="card metric"><strong>${lcs}</strong><small>LifeChecks</small></div><div class="card metric"><strong>${cr}</strong><small>Care requests</small></div><div class="card metric"><strong>${providers.filter(p=>p.status==="verified").length}</strong><small>Verified providers</small></div></div>
+      <div class="card"><div style="display:flex;gap:6px;margin-bottom:15px;flex-wrap:wrap">${["overview","members","payments"].map(t=>`<button class="btn ${state.adminTab===t?"btn-navy":"btn-outline"}" onclick="state.adminTab='${t}';render()">${t[0].toUpperCase()+t.slice(1)}</button>`).join("")}</div>
+      ${state.adminTab==="overview"?`<div class="grid grid-3">${[
+        ["Registration","LIVE"],["LifeCheck 360™","LIVE"],["Provider directory","LIVE"],["Manual payments","PILOT"],["Paystack","READY TO CONNECT"],["Flutterwave","READY TO CONNECT"]
+      ].map(x=>`<div style="border:1px solid var(--line);border-radius:9px;padding:13px"><b style="font-size:11px;color:var(--navy)">${x[0]}</b><div style="font-size:9px;color:var(--green);font-weight:800;margin-top:4px">${x[1]}</div></div>`).join("")}</div>`:
+      state.adminTab==="members"?`<div class="table-wrap"><table><thead><tr><th>Health ID</th><th>Name</th><th>Email</th><th>Country</th><th>LifeChecks</th><th>Registered</th></tr></thead><tbody>${users.map(u=>`<tr><td>${escapeHtml(u.healthId)}</td><td>${escapeHtml(u.fn+" "+u.ln)}</td><td>${escapeHtml(u.email)}</td><td>${escapeHtml(u.country)}</td><td>${(u.lifechecks||[]).length}</td><td>${new Date(u.createdAt).toLocaleDateString("en-GB")}</td></tr>`).join("")||`<tr><td colspan="6">No members yet.</td></tr>`}</tbody></table></div>`:
+      `<div class="grid grid-2"><div class="card"><h3>Manual payment reference</h3><p style="font-size:11px;color:var(--muted)">Generate a reference for the pilot's manual bank-transfer workflow.</p><button class="btn btn-gold" onclick="state.payment=paymentRef();render()">Generate reference</button>${state.payment?`<div class="success-id" style="font-size:17px">${state.payment}</div>`:""}</div><div class="card"><h3>Payment abstraction</h3><p style="font-size:11px;color:var(--muted)">V1 intentionally uses manual transfer. Payment integrations can be connected later through a secure backend.</p><div class="notice">Stripe is excluded from the AHii Care payment strategy.</div></div></div>`}</div></div></div>`;
+    }
+    function adminLogin(){if(document.getElementById("adminPwd").value==="AHII-DEMO-2026"){state.admin=true;render()}else alert("Incorrect demo password.");}
+
+    function render(){
+      document.getElementById("navActions").innerHTML=navActions();
+      const routes={home,how,register,login,lifecheck,providers:providersPage,corporate,diaspora,joinprovider:joinProvider,dashboard,admin};
+      document.getElementById("app").innerHTML=(routes[state.page]||home)();
+      if(state.toast){const t=document.createElement("div");t.className="toast";t.textContent=state.toast;document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
+    }
+
+    load();
+    render();
+  </script>
+</body>
+</html>
